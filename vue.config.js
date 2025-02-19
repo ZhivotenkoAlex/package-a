@@ -1,14 +1,18 @@
+const webpack = require('webpack')
 const { defineConfig } = require('@vue/cli-service')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
 
 module.exports = defineConfig({
-  // publicPath: 'http://localhost:8081/',
-  publicPath: 'https://package-a.web.app/',
+  publicPath: process.env.VUE_APP_PUBLIC_PATH,
   configureWebpack: {
     optimization: {
       splitChunks: false
     },
     plugins: [
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+        __VUE_PROD_DEVTOOLS__: false,
+      }),
       new ModuleFederationPlugin({
         name: 'packageA',
         filename: 'remoteEntry.js',
