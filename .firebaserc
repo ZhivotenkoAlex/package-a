@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "development-417611"
+  },
+  "targets": {
+    "development-417611": {
+      "hosting": {
+        "package-a": [
+          "package-a"
+        ]
+      }
+    }
+  }
+}
